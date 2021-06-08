@@ -13,15 +13,16 @@ set(lib_src
     static_data.F90
     surface.F90
     thompson_mp_climo_data.F90
+    wam_climo_data.f90
     utils.F90
     write_data.F90)
 
 set(exe_src chgres.F90)
 
 if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
-  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -r8 -convert big_endian -assume byterecl")
+  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -r8 -assume byterecl")
 elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU)$")
-  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -ffree-line-length-0 -fdefault-real-8 -fconvert=big-endian")
+  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -ffree-line-length-0 -fdefault-real-8")
   
   # Turn on this argument mismatch flag for gfortran10.
   if(CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10)
